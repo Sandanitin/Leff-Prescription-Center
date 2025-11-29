@@ -25,30 +25,6 @@ const Header = () => {
 
   return (
     <header className="bg-blue-900 text-white shadow-md sticky top-0 z-50">
-      {/* Top contact bar */}
-      <div className="bg-blue-800 py-2 px-4">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-          <div className="flex items-center gap-4 mb-2 md:mb-0">
-            <span className="flex items-center gap-2">
-              <FaPhone className="text-yellow-400" />
-              <span>718-665-1163</span>
-            </span>
-            <span>70 East 161st Street, Bronx</span>
-          </div>
-          <div className="flex flex-wrap justify-center gap-2">
-            {quickActions.map((action, index) => (
-              <Link 
-                key={index} 
-                to={action.path} 
-                className="bg-yellow-500 hover:bg-yellow-600 text-blue-900 font-medium px-3 py-1 rounded text-sm transition-colors"
-              >
-                {action.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main header */}
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">

@@ -103,9 +103,11 @@ const VaccinationForm = () => {
   };
 
   return (
-    <div className="form-container" id="vaccination-form">
-      <h2 className="form-title">Schedule Your Vaccination</h2>
-      <p className="form-subtitle">Book your immunization appointment today</p>
+    <div className="form-container bg-blue-50 rounded-2xl p-6" id="vaccination-form">
+      <div className="mb-6">
+        <h2 className="form-title text-2xl font-bold text-blue-800 mb-2">Schedule Your Vaccination</h2>
+        <p className="form-subtitle text-gray-600">Book your immunization appointment today</p>
+      </div>
       
       {submitted && (
         <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6 flex items-center gap-2">
@@ -114,10 +116,10 @@ const VaccinationForm = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="pharma-form">
-        <div className="form-row">
+      <form onSubmit={handleSubmit} className="pharma-form space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="form-group">
-            <label htmlFor="vax-fullName">Full Name *</label>
+            <label htmlFor="vax-fullName" className="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
             <input
               type="text"
               id="vax-fullName"
@@ -132,7 +134,7 @@ const VaccinationForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="vax-phone">Phone Number *</label>
+            <label htmlFor="vax-phone" className="block text-sm font-semibold text-gray-700 mb-1">Phone Number *</label>
             <input
               type="tel"
               id="vax-phone"
@@ -140,16 +142,16 @@ const VaccinationForm = () => {
               value={formData.phone}
               onChange={handleChange}
               required
-              placeholder="718-665-1163"
+              placeholder="Your phone number"
               className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
             />
             {errors.phone && <span className="text-red-500 text-sm mt-1">{errors.phone}</span>}
           </div>
         </div>
 
-        <div className="form-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="form-group">
-            <label htmlFor="vax-email">Email Address *</label>
+            <label htmlFor="vax-email" className="block text-sm font-semibold text-gray-700 mb-1">Email Address *</label>
             <input
               type="email"
               id="vax-email"
@@ -164,7 +166,7 @@ const VaccinationForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="vax-vaccineType">Vaccine Type *</label>
+            <label htmlFor="vax-vaccineType" className="block text-sm font-semibold text-gray-700 mb-1">Vaccine Type *</label>
             <select
               id="vax-vaccineType"
               name="vaccineType"
@@ -186,9 +188,9 @@ const VaccinationForm = () => {
           </div>
         </div>
 
-        <div className="form-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="form-group">
-            <label htmlFor="vax-datePreference">Preferred Date *</label>
+            <label htmlFor="vax-datePreference" className="block text-sm font-semibold text-gray-700 mb-1">Preferred Date *</label>
             <input
               type="date"
               id="vax-datePreference"
@@ -202,7 +204,7 @@ const VaccinationForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="vax-timePreference">Preferred Time *</label>
+            <label htmlFor="vax-timePreference" className="block text-sm font-semibold text-gray-700 mb-1">Preferred Time *</label>
             <select
               id="vax-timePreference"
               name="timePreference"
@@ -220,9 +222,9 @@ const VaccinationForm = () => {
           </div>
         </div>
 
-        <div className="form-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="form-group">
-            <label htmlFor="vax-insuranceProvider">Insurance Provider</label>
+            <label htmlFor="vax-insuranceProvider" className="block text-sm font-semibold text-gray-700 mb-1">Insurance Provider</label>
             <input
               type="text"
               id="vax-insuranceProvider"
@@ -235,7 +237,7 @@ const VaccinationForm = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="vax-insuranceId">Insurance ID</label>
+            <label htmlFor="vax-insuranceId" className="block text-sm font-semibold text-gray-700 mb-1">Insurance ID</label>
             <input
               type="text"
               id="vax-insuranceId"
@@ -249,7 +251,7 @@ const VaccinationForm = () => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="vax-additionalNotes">Additional Notes</label>
+          <label htmlFor="vax-additionalNotes" className="block text-sm font-semibold text-gray-700 mb-1">Additional Notes</label>
           <textarea
             id="vax-additionalNotes"
             name="additionalNotes"
@@ -263,7 +265,7 @@ const VaccinationForm = () => {
 
         <button 
           type="submit" 
-          className="submit-btn w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 mt-4 flex items-center justify-center"
+          className="submit-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 mt-4 flex items-center justify-center"
           disabled={isSubmitting}
         >
           {isSubmitting ? (

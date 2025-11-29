@@ -57,36 +57,6 @@ const HomePage = () => {
               Right by the Stadium. Right for Your Health.
             </p>
           </motion.div>
-
-          {/* Contact Grid */}
-
-        </div>
-      </section>
-
-      {/* Store Hours */}
-      <section className="py-16 bg-white relative z-10 -mt-8 mx-4 md:mx-12 lg:mx-24 rounded-3xl shadow-xl border border-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
-              <FaClock className="text-blue-600" /> Store Hours
-            </h2>
-            <p className="text-gray-500">We're here when you need us</p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="bg-blue-50 p-6 rounded-2xl text-center border border-blue-100 hover:shadow-lg transition-shadow">
-              <strong className="block text-blue-800 text-lg mb-2">Monday - Friday</strong>
-              <p className="text-2xl font-bold text-gray-700">9:00 AM - 6:30 PM</p>
-            </div>
-            <div className="bg-green-50 p-6 rounded-2xl text-center border border-green-100 hover:shadow-lg transition-shadow">
-              <strong className="block text-green-800 text-lg mb-2">Saturday</strong>
-              <p className="text-2xl font-bold text-gray-700">10:00 AM - 3:00 PM</p>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-2xl text-center border border-gray-200 hover:shadow-lg transition-shadow">
-              <strong className="block text-gray-600 text-lg mb-2">Sunday</strong>
-              <p className="text-2xl font-bold text-gray-400">CLOSED</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -265,25 +235,25 @@ const HomePage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 transition-transform hover:scale-[1.02]">
               <div className="bg-blue-600 p-6 text-white text-center">
                 <h3 className="text-2xl font-bold flex items-center justify-center gap-3">
                   <FaSyringe /> Vaccination Appointment
                 </h3>
               </div>
-              <div className="p-8">
+              <div className="p-6">
                 <VaccinationForm />
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200">
+            <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-200 transition-transform hover:scale-[1.02]">
               <div className="bg-green-600 p-6 text-white text-center">
                 <h3 className="text-2xl font-bold flex items-center justify-center gap-3">
                   <FaPrescriptionBottleAlt /> Prescription Refill
                 </h3>
               </div>
-              <div className="p-8">
+              <div className="p-6">
                 <RefillForm />
               </div>
             </div>

@@ -105,11 +105,11 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-gray-800 mb-1">Store Hours</h3>
-                  <p className="text-gray-600">
-                    <strong>Monday - Friday:</strong> 9:00 AM - 6:30 PM<br />
-                    <strong>Saturday:</strong> 10:00 AM - 3:00 PM<br />
-                    <strong>Sunday:</strong> Closed
-                  </p>
+                  <div className="text-gray-600">
+                    <p className="mb-1"><strong>Monday - Friday:</strong> 9:00 AM - 6:30 PM</p>
+                    <p className="mb-1"><strong>Saturday:</strong> 10:00 AM - 3:00 PM</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                  </div>
                 </div>
               </div>
             </div>

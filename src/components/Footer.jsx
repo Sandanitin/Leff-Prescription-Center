@@ -100,19 +100,10 @@ const Footer = () => {
           {/* Store Hours */}
           <div>
             <h4 className="text-lg font-bold text-white mb-4">Store Hours</h4>
-            <div className="space-y-3">
-              <div className="flex justify-between border-b border-blue-700 pb-2">
-                <span>Monday - Friday</span>
-                <span className="font-medium">9:00 AM - 6:30 PM</span>
-              </div>
-              <div className="flex justify-between border-b border-blue-700 pb-2">
-                <span>Saturday</span>
-                <span className="font-medium">10:00 AM - 3:00 PM</span>
-              </div>
-              <div className="flex justify-between border-b border-blue-700 pb-2">
-                <span>Sunday</span>
-                <span className="font-medium text-blue-400">Closed</span>
-              </div>
+            <div className="text-blue-200">
+              <p className="mb-1"><strong>Monday - Friday:</strong> 9:00 AM - 6:30 PM</p>
+              <p className="mb-1"><strong>Saturday:</strong> 10:00 AM - 3:00 PM</p>
+              <p><strong>Sunday:</strong> Closed</p>
             </div>
             
             <div className="mt-6">
