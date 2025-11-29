@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f0f9ff"/>
+  
+  <!-- Main container -->
+  <rect x="50" y="50" width="700" height="500" rx="20" fill="white" stroke="#dbeafe" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="400" y="100" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1e40af" text-anchor="middle">
+    Our Comprehensive Services
+  </text>
+  
+  <!-- Service icons -->
+  <!-- Pharmacy -->
+  <circle cx="150" cy="200" r="40" fill="#dbeafe"/>
+  <text x="150" y="205" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#1e40af">💊</text>
+  <text x="150" y="260" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#334155">Pharmacy</text>
+  
+  <!-- Health Check -->
+  <circle cx="300" cy="200" r="40" fill="#ffe4e6"/>
+  <text x="300" y="205" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#dc2626">❤️</text>
+  <text x="300" y="260" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#334155">Health</text>
+  
+  <!-- Delivery -->
+  <circle cx="450" cy="200" r="40" fill="#dcfce7"/>
+  <text x="450" y="205" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#16a34a">🚚</text>
+  <text x="450" y="260" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#334155">Delivery</text>
+  
+  <!-- Insurance -->
+  <circle cx="600" cy="200" r="40" fill="#faf5ff"/>
+  <text x="600" y="205" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#7c3aed">📋</text>
+  <text x="600" y="260" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#334155">Insurance</text>
+  
+  <!-- Service guarantees -->
+  <rect x="100" y="300" width="600" height="180" rx="10" fill="#eff6ff" stroke="#c7d2fe" stroke-width="1"/>
+  <text x="400" y="330" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#312e81" text-anchor="middle">
+    Service Guarantees
+  </text>
+  
+  <!-- Guarantee items -->
+  <text x="120" y="360" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">✓ Fast Service - Ready in 15 minutes or less</text>
+  <text x="120" y="385" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">✓ Quality Care - Licensed pharmacists review</text>
+  <text x="120" y="410" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">✓ Competitive Pricing - Match or beat prices</text>
+  <text x="120" y="435" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">✓ Free Delivery - No-cost delivery service</text>
+  <text x="120" y="460" font-family="Arial, sans-serif" font-size="14" fill="#4b5563">✓ Insurance Expertise - Maximize benefits</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="80" cy="80" r="10" fill="#93c5fd" opacity="0.5"/>
+  <circle cx="720" cy="520" r="15" fill="#a78bfa" opacity="0.5"/>
+  <circle cx="750" cy="100" r="8" fill="#fdba74" opacity="0.5"/>
+</svg>
