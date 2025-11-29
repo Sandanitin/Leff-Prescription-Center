@@ -2,9 +2,11 @@ import React from 'react';
 import { 
   FaPrescription, FaSyringe, FaHeartbeat, FaTruck, 
   FaLanguage, FaCheckCircle, FaHospital, FaHome,
-  FaPills, FaStethoscope, FaMoneyBillWave, FaCreditCard
+  FaPills, FaStethoscope, FaMoneyBillWave, FaCreditCard, FaPrescriptionBottleAlt
 } from 'react-icons/fa';
 import { MdVaccines, MdLocalPharmacy, MdBloodtype } from 'react-icons/md';
+import VaccinationForm from './VaccinationForm';
+import RefillForm from './RefillForm';
 
 const ServicesPage = () => {
   const services = [
@@ -168,6 +170,40 @@ const ServicesPage = () => {
           <a href="mailto:leffdrugs9@gmail.com" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
             Email: leffdrugs9@gmail.com
           </a>
+        </div>
+      </div>
+
+      {/* Online Services */}
+      <div className="mt-16">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Online Services</h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Schedule appointments and request refills from the comfort of your home
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+            <div className="bg-blue-600 p-4 text-white text-center">
+              <h3 className="text-xl font-bold flex items-center justify-center gap-2">
+                <FaSyringe className="text-xl" /> Vaccination Appointment
+              </h3>
+            </div>
+            <div className="p-6 flex-grow">
+              <VaccinationForm />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-200 transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+            <div className="bg-green-600 p-4 text-white text-center">
+              <h3 className="text-xl font-bold flex items-center justify-center gap-2">
+                <FaPrescriptionBottleAlt className="text-xl" /> Prescription Refill
+              </h3>
+            </div>
+            <div className="p-6 flex-grow">
+              <RefillForm />
+            </div>
+          </div>
         </div>
       </div>
     </div>

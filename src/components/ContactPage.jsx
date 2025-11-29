@@ -22,8 +22,23 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Contact Form Submitted:', formData);
-    alert('Thank you for your message! We will contact you soon.');
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(formData.subject || 'Contact Form Submission');
+    const body = encodeURIComponent(`
+Name: ${formData.name}
+Phone: ${formData.phone}
+Email: ${formData.email}
+Subject: ${formData.subject}
+Message: ${formData.message}
+Preferred Contact Method: ${formData.contactMethod}
+Best Time to Contact: ${formData.bestTime}
+    `.trim());
+    
+    // Open default email client with pre-filled data
+    window.location.href = `mailto:leffdrugs9@gmail.com?subject=${subject}&body=${body}`;
+    
+    // Reset form
     setFormData({
       name: '',
       phone: '',

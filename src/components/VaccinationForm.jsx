@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SingleFormButton from './SingleFormButton';
 
 const VaccinationForm = () => {
   const [formData, setFormData] = useState({
@@ -102,24 +103,49 @@ const VaccinationForm = () => {
     }, 1000);
   };
 
+  const shareViaWhatsApp = () => {
+    // Create a formatted message with form data
+    const message = `*Vaccination Appointment Request*
+
+*Full Name:* ${formData.fullName || 'N/A'}
+*Phone:* ${formData.phone || 'N/A'}
+*Email:* ${formData.email || 'N/A'}
+*Vaccine Type:* ${formData.vaccineType || 'N/A'}
+*Preferred Date:* ${formData.datePreference || 'N/A'}
+*Preferred Time:* ${formData.timePreference || 'N/A'}
+*Insurance Provider:* ${formData.insuranceProvider || 'N/A'}
+*Insurance ID:* ${formData.insuranceId || 'N/A'}
+*Additional Notes:* ${formData.additionalNotes || 'N/A'}`;
+
+    // Encode the message for URL
+    const encodedMessage = encodeURIComponent(message);
+    
+    // Create WhatsApp URL using the pharmacy's phone number (718-665-1163)
+    // Note: WhatsApp requires phone numbers in international format without dashes or parentheses
+    const whatsappUrl = `https://wa.me/17186651163?text=${encodedMessage}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
-    <div className="form-container bg-blue-50 rounded-2xl p-6" id="vaccination-form">
-      <div className="mb-6">
-        <h2 className="form-title text-2xl font-bold text-blue-800 mb-2">Schedule Your Vaccination</h2>
-        <p className="form-subtitle text-gray-600">Book your immunization appointment today</p>
+    <div className="form-container bg-blue-50 rounded-lg p-2 w-full" id="vaccination-form">
+      <div className="mb-2">
+        <h2 className="text-base font-bold text-blue-800 mb-1">Schedule Your Vaccination</h2>
+        <p className="text-gray-600 text-xs">Book your immunization appointment</p>
       </div>
       
       {submitted && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-6 flex items-center gap-2">
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-          Thank you! Your appointment request has been submitted. We'll contact you shortly to confirm.
+        <div className="bg-green-100 border border-green-200 text-green-800 px-2 py-1 rounded-sm mb-2 flex items-center gap-1">
+          <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+          <span className="text-xs">Appointment submitted!</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="pharma-form space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="form-group">
-            <label htmlFor="vax-fullName" className="block text-sm font-semibold text-gray-700 mb-1">Full Name *</label>
+      <form onSubmit={handleSubmit} className="space-y-1.5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-fullName" className="text-xs font-semibold text-gray-700">Full Name *</label>
             <input
               type="text"
               id="vax-fullName"
@@ -128,13 +154,13 @@ const VaccinationForm = () => {
               onChange={handleChange}
               required
               placeholder="Enter your full name"
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.fullName ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.fullName ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.fullName && <span className="text-red-500 text-sm mt-1">{errors.fullName}</span>}
+            {errors.fullName && <span className="text-red-500 text-xs mt-0.5">{errors.fullName}</span>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="vax-phone" className="block text-sm font-semibold text-gray-700 mb-1">Phone Number *</label>
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-phone" className="text-xs font-semibold text-gray-700">Phone Number *</label>
             <input
               type="tel"
               id="vax-phone"
@@ -143,15 +169,15 @@ const VaccinationForm = () => {
               onChange={handleChange}
               required
               placeholder="Your phone number"
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.phone && <span className="text-red-500 text-sm mt-1">{errors.phone}</span>}
+            {errors.phone && <span className="text-red-500 text-xs mt-0.5">{errors.phone}</span>}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="form-group">
-            <label htmlFor="vax-email" className="block text-sm font-semibold text-gray-700 mb-1">Email Address *</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-email" className="text-xs font-semibold text-gray-700">Email Address *</label>
             <input
               type="email"
               id="vax-email"
@@ -160,20 +186,20 @@ const VaccinationForm = () => {
               onChange={handleChange}
               required
               placeholder="your@email.com"
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
+            {errors.email && <span className="text-red-500 text-xs mt-0.5">{errors.email}</span>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="vax-vaccineType" className="block text-sm font-semibold text-gray-700 mb-1">Vaccine Type *</label>
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-vaccineType" className="text-xs font-semibold text-gray-700">Vaccine Type *</label>
             <select
               id="vax-vaccineType"
               name="vaccineType"
               value={formData.vaccineType}
               onChange={handleChange}
               required
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.vaccineType ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.vaccineType ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select vaccine type</option>
               <option value="flu">Flu Shot</option>
@@ -184,13 +210,13 @@ const VaccinationForm = () => {
               <option value="tdap">Tdap</option>
               <option value="other">Other</option>
             </select>
-            {errors.vaccineType && <span className="text-red-500 text-sm mt-1">{errors.vaccineType}</span>}
+            {errors.vaccineType && <span className="text-red-500 text-xs mt-0.5">{errors.vaccineType}</span>}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="form-group">
-            <label htmlFor="vax-datePreference" className="block text-sm font-semibold text-gray-700 mb-1">Preferred Date *</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-datePreference" className="text-xs font-semibold text-gray-700">Preferred Date *</label>
             <input
               type="date"
               id="vax-datePreference"
@@ -198,33 +224,33 @@ const VaccinationForm = () => {
               value={formData.datePreference}
               onChange={handleChange}
               required
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.datePreference ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.datePreference ? 'border-red-500' : 'border-gray-300'}`}
             />
-            {errors.datePreference && <span className="text-red-500 text-sm mt-1">{errors.datePreference}</span>}
+            {errors.datePreference && <span className="text-red-500 text-xs mt-0.5">{errors.datePreference}</span>}
           </div>
 
-          <div className="form-group">
-            <label htmlFor="vax-timePreference" className="block text-sm font-semibold text-gray-700 mb-1">Preferred Time *</label>
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-timePreference" className="text-xs font-semibold text-gray-700">Preferred Time *</label>
             <select
               id="vax-timePreference"
               name="timePreference"
               value={formData.timePreference}
               onChange={handleChange}
               required
-              className={`w-full px-4 py-2 rounded-lg border focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all ${errors.timePreference ? 'border-red-500' : 'border-gray-300'}`}
+              className={`w-full px-1.5 py-1 rounded border text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all ${errors.timePreference ? 'border-red-500' : 'border-gray-300'}`}
             >
               <option value="">Select time</option>
               <option value="morning">Morning (9:00 AM - 12:00 PM)</option>
               <option value="afternoon">Afternoon (12:00 PM - 3:00 PM)</option>
               <option value="evening">Evening (3:00 PM - 6:00 PM)</option>
             </select>
-            {errors.timePreference && <span className="text-red-500 text-sm mt-1">{errors.timePreference}</span>}
+            {errors.timePreference && <span className="text-red-500 text-xs mt-0.5">{errors.timePreference}</span>}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="form-group">
-            <label htmlFor="vax-insuranceProvider" className="block text-sm font-semibold text-gray-700 mb-1">Insurance Provider</label>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-insuranceProvider" className="text-xs font-semibold text-gray-700">Insurance Provider</label>
             <input
               type="text"
               id="vax-insuranceProvider"
@@ -232,12 +258,12 @@ const VaccinationForm = () => {
               value={formData.insuranceProvider}
               onChange={handleChange}
               placeholder="e.g., Blue Cross, Medicaid, Medicare"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+              className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all"
             />
           </div>
 
-          <div className="form-group">
-            <label htmlFor="vax-insuranceId" className="block text-sm font-semibold text-gray-700 mb-1">Insurance ID</label>
+          <div className="flex flex-col gap-0.5">
+            <label htmlFor="vax-insuranceId" className="text-xs font-semibold text-gray-700">Insurance ID</label>
             <input
               type="text"
               id="vax-insuranceId"
@@ -245,41 +271,31 @@ const VaccinationForm = () => {
               value={formData.insuranceId}
               onChange={handleChange}
               placeholder="Your insurance ID number"
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all"
+              className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all"
             />
           </div>
         </div>
 
-        <div className="form-group">
-          <label htmlFor="vax-additionalNotes" className="block text-sm font-semibold text-gray-700 mb-1">Additional Notes</label>
+        <div className="flex flex-col gap-0.5">
+          <label htmlFor="vax-additionalNotes" className="text-xs font-semibold text-gray-700">Additional Notes</label>
           <textarea
             id="vax-additionalNotes"
             name="additionalNotes"
             value={formData.additionalNotes}
             onChange={handleChange}
-            rows="3"
+            rows="2"
             placeholder="Any allergies, special requests, or questions?"
-            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all resize-y min-h-[100px]"
+            className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-200 outline-none transition-all resize-y min-h-[40px]"
           ></textarea>
         </div>
 
-        <button 
-          type="submit" 
-          className="submit-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 mt-4 flex items-center justify-center"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? (
-            <>
-              <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-              Processing...
-            </>
-          ) : (
-            'Schedule Appointment'
-          )}
-        </button>
+        <SingleFormButton 
+          onSubmit={handleSubmit}
+          onSubmitText="Schedule Appointment"
+          isSubmitting={isSubmitting}
+          onWhatsAppClick={shareViaWhatsApp}
+          submitColor="blue"
+        />
       </form>
     </div>
   );

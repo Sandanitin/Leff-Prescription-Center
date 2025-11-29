@@ -1,4 +1,5 @@
 import React from 'react';
+import heroBg from '../assets/hero-bg.png';
 
 const AboutPage = () => {
   return (
@@ -12,12 +13,23 @@ const AboutPage = () => {
 
       <div className="bg-white rounded-2xl shadow-lg p-8 mb-12">
         <h2 className="text-3xl font-bold text-blue-800 mb-6">Our Story</h2>
-        <p className="text-gray-700 mb-6 leading-relaxed">
-          Located in the heart of the Bronx at 70 East 161st Street, LEFF PRESCRIPTION CENTER has been a cornerstone of community healthcare for many years. As a family-owned pharmacy, we take pride in providing personalized care that goes beyond just filling prescriptions.
-        </p>
-        <p className="text-gray-700 mb-6 leading-relaxed">
-          We believe that healthcare should be accessible, affordable, and delivered with compassion. Our commitment to the Bronx community drives everything we do.
-        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              Located in the heart of the Bronx at 70 East 161st Street, LEFF PRESCRIPTION CENTER has been a cornerstone of community healthcare for many years. As a family-owned pharmacy, we take pride in providing personalized care that goes beyond just filling prescriptions.
+            </p>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              We believe that healthcare should be accessible, affordable, and delivered with compassion. Our commitment to the Bronx community drives everything we do.
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <img 
+              src={heroBg} 
+              alt="Leff Prescription Center - Serving the Bronx Community" 
+              className="rounded-xl shadow-md max-w-full h-auto"
+            />
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

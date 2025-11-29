@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SingleFormButton from './SingleFormButton';
 
 const RefillForm = () => {
     const [formData, setFormData] = useState({
@@ -108,24 +109,51 @@ const RefillForm = () => {
         }, 1000);
     };
 
+    const shareViaWhatsApp = () => {
+        // Create a formatted message with form data
+        const message = `*Prescription Refill Request*
+
+*Full Name:* ${formData.fullName || 'N/A'}
+*Date of Birth:* ${formData.dateOfBirth || 'N/A'}
+*Phone:* ${formData.phone || 'N/A'}
+*Email:* ${formData.email || 'N/A'}
+*Rx Number:* ${formData.rxNumber || 'N/A'}
+*Medication:* ${formData.medicationName || 'N/A'}
+*Doctor:* ${formData.prescribingDoctor || 'N/A'}
+*Preference:* ${formData.deliveryPreference || 'N/A'}
+*Insurance Provider:* ${formData.insuranceProvider || 'N/A'}
+*Insurance ID:* ${formData.insuranceId || 'N/A'}
+*Instructions:* ${formData.additionalInstructions || 'N/A'}`;
+
+        // Encode the message for URL
+        const encodedMessage = encodeURIComponent(message);
+        
+        // Create WhatsApp URL using the pharmacy's phone number (718-665-1163)
+        // Note: WhatsApp requires phone numbers in international format without dashes or parentheses
+        const whatsappUrl = `https://wa.me/17186651163?text=${encodedMessage}`;
+        
+        // Open WhatsApp in a new tab
+        window.open(whatsappUrl, '_blank');
+    };
+
     return (
-        <div id="refill-form" className="bg-green-50 rounded-2xl p-6">
-            <div className="mb-6">
-                <h2 className="text-2xl font-bold text-green-800 mb-2">Request Prescription Refill</h2>
-                <p className="text-gray-600">Hassle-free online refill requests - ready in 10-15 minutes</p>
+        <div id="refill-form" className="form-container bg-green-50 rounded-lg p-2 w-full">
+            <div className="mb-2">
+                <h2 className="text-base font-bold text-green-800 mb-1">Request Prescription Refill</h2>
+                <p className="text-gray-600 text-xs">Hassle-free refill requests - ready in 10-15 minutes</p>
             </div>
 
             {submitted && (
-                <div className="bg-green-100 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-                    Your refill request has been received! We'll have it ready for pickup or delivery soon.
+                <div className="bg-green-100 border border-green-200 text-green-800 px-2 py-1 rounded-sm mb-2 flex items-center gap-1">
+                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
+                    <span className="text-xs">Refill request submitted!</span>
                 </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-fullName" className="text-sm font-semibold text-gray-700">Full Name *</label>
+            <form onSubmit={handleSubmit} className="space-y-1.5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-fullName" className="text-xs font-semibold text-gray-700">Full Name *</label>
                         <input
                             type="text"
                             id="refill-fullName"
@@ -134,13 +162,13 @@ const RefillForm = () => {
                             onChange={handleChange}
                             required
                             placeholder="Enter your full name"
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.fullName ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.fullName ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.fullName && <span className="text-red-500 text-sm mt-1">{errors.fullName}</span>}
+                        {errors.fullName && <span className="text-red-500 text-xs mt-0.5">{errors.fullName}</span>}
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-dateOfBirth" className="text-sm font-semibold text-gray-700">Date of Birth *</label>
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-dateOfBirth" className="text-xs font-semibold text-gray-700">Date of Birth *</label>
                         <input
                             type="date"
                             id="refill-dateOfBirth"
@@ -148,15 +176,15 @@ const RefillForm = () => {
                             value={formData.dateOfBirth}
                             onChange={handleChange}
                             required
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.dateOfBirth ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.dateOfBirth && <span className="text-red-500 text-sm mt-1">{errors.dateOfBirth}</span>}
+                        {errors.dateOfBirth && <span className="text-red-500 text-xs mt-0.5">{errors.dateOfBirth}</span>}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-phone" className="text-sm font-semibold text-gray-700">Phone Number *</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-phone" className="text-xs font-semibold text-gray-700">Phone Number *</label>
                         <input
                             type="tel"
                             id="refill-phone"
@@ -165,13 +193,13 @@ const RefillForm = () => {
                             onChange={handleChange}
                             required
                             placeholder="Your phone number"
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.phone && <span className="text-red-500 text-sm mt-1">{errors.phone}</span>}
+                        {errors.phone && <span className="text-red-500 text-xs mt-0.5">{errors.phone}</span>}
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-email" className="text-sm font-semibold text-gray-700">Email Address</label>
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-email" className="text-xs font-semibold text-gray-700">Email Address</label>
                         <input
                             type="email"
                             id="refill-email"
@@ -179,15 +207,15 @@ const RefillForm = () => {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="your@email.com"
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email}</span>}
+                        {errors.email && <span className="text-red-500 text-xs mt-0.5">{errors.email}</span>}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-rxNumber" className="text-sm font-semibold text-gray-700">Prescription (Rx) Number *</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-rxNumber" className="text-xs font-semibold text-gray-700">Prescription (Rx) Number *</label>
                         <input
                             type="text"
                             id="refill-rxNumber"
@@ -196,13 +224,13 @@ const RefillForm = () => {
                             onChange={handleChange}
                             required
                             placeholder="Located on your prescription label"
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.rxNumber ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.rxNumber ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.rxNumber && <span className="text-red-500 text-sm mt-1">{errors.rxNumber}</span>}
+                        {errors.rxNumber && <span className="text-red-500 text-xs mt-0.5">{errors.rxNumber}</span>}
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-medicationName" className="text-sm font-semibold text-gray-700">Medication Name *</label>
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-medicationName" className="text-xs font-semibold text-gray-700">Medication Name *</label>
                         <input
                             type="text"
                             id="refill-medicationName"
@@ -211,15 +239,15 @@ const RefillForm = () => {
                             onChange={handleChange}
                             required
                             placeholder="Name of medication"
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.medicationName ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.medicationName ? 'border-red-500' : 'border-gray-300'}`}
                         />
-                        {errors.medicationName && <span className="text-red-500 text-sm mt-1">{errors.medicationName}</span>}
+                        {errors.medicationName && <span className="text-red-500 text-xs mt-0.5">{errors.medicationName}</span>}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-prescribingDoctor" className="text-sm font-semibold text-gray-700">Prescribing Doctor</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-prescribingDoctor" className="text-xs font-semibold text-gray-700">Prescribing Doctor</label>
                         <input
                             type="text"
                             id="refill-prescribingDoctor"
@@ -227,31 +255,31 @@ const RefillForm = () => {
                             value={formData.prescribingDoctor}
                             onChange={handleChange}
                             placeholder="Doctor's name"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all"
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-deliveryPreference" className="text-sm font-semibold text-gray-700">Preference *</label>
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-deliveryPreference" className="text-xs font-semibold text-gray-700">Preference *</label>
                         <select
                             id="refill-deliveryPreference"
                             name="deliveryPreference"
                             value={formData.deliveryPreference}
                             onChange={handleChange}
                             required
-                            className={`w-full px-4 py-2 rounded-lg border focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all ${errors.deliveryPreference ? 'border-red-500' : 'border-gray-300'}`}
+                            className={`w-full px-1.5 py-1 rounded border text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all ${errors.deliveryPreference ? 'border-red-500' : 'border-gray-300'}`}
                         >
                             <option value="">Select option</option>
                             <option value="pickup">Pickup at Store</option>
                             <option value="delivery">Free Home Delivery</option>
                         </select>
-                        {errors.deliveryPreference && <span className="text-red-500 text-sm mt-1">{errors.deliveryPreference}</span>}
+                        {errors.deliveryPreference && <span className="text-red-500 text-xs mt-0.5">{errors.deliveryPreference}</span>}
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-insuranceProvider" className="text-sm font-semibold text-gray-700">Insurance Provider</label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-1.5">
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-insuranceProvider" className="text-xs font-semibold text-gray-700">Insurance Provider</label>
                         <input
                             type="text"
                             id="refill-insuranceProvider"
@@ -259,12 +287,12 @@ const RefillForm = () => {
                             value={formData.insuranceProvider}
                             onChange={handleChange}
                             placeholder="e.g., Blue Cross, Medicaid, Medicare"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all"
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1">
-                        <label htmlFor="refill-insuranceId" className="text-sm font-semibold text-gray-700">Insurance ID</label>
+                    <div className="flex flex-col gap-0.5">
+                        <label htmlFor="refill-insuranceId" className="text-xs font-semibold text-gray-700">Insurance ID</label>
                         <input
                             type="text"
                             id="refill-insuranceId"
@@ -272,41 +300,31 @@ const RefillForm = () => {
                             value={formData.insuranceId}
                             onChange={handleChange}
                             placeholder="Your insurance ID number"
-                            className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all"
+                            className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all"
                         />
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-1">
-                    <label htmlFor="refill-additionalInstructions" className="text-sm font-semibold text-gray-700">Additional Instructions</label>
+                <div className="flex flex-col gap-0.5">
+                    <label htmlFor="refill-additionalInstructions" className="text-xs font-semibold text-gray-700">Additional Instructions</label>
                     <textarea
                         id="refill-additionalInstructions"
                         name="additionalInstructions"
                         value={formData.additionalInstructions}
                         onChange={handleChange}
-                        rows="3"
+                        rows="2"
                         placeholder="Special delivery instructions or questions..."
-                        className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all resize-y min-h-[100px]"
+                        className="w-full px-1.5 py-1 rounded border border-gray-300 text-xs focus:border-green-500 focus:ring-1 focus:ring-green-200 outline-none transition-all resize-y min-h-[40px]"
                     ></textarea>
                 </div>
 
-                <button 
-                    type="submit" 
-                    className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 mt-4 flex items-center justify-center"
-                    disabled={isSubmitting}
-                >
-                    {isSubmitting ? (
-                        <>
-                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                            </svg>
-                            Processing...
-                        </>
-                    ) : (
-                        'Submit Refill Request'
-                    )}
-                </button>
+                <SingleFormButton 
+                    onSubmit={handleSubmit}
+                    onSubmitText="Submit Refill Request"
+                    isSubmitting={isSubmitting}
+                    onWhatsAppClick={shareViaWhatsApp}
+                    submitColor="green"
+                />
             </form>
         </div>
     );
