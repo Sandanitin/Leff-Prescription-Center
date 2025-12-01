@@ -6,6 +6,7 @@ import AboutPage from './components/AboutPage';
 import ServicesPage from './components/ServicesPage';
 import ContactPage from './components/ContactPage';
 import InsurancePage from './components/InsurancePage';
+import CareersPage from './components/CareersPage';
 import NotFoundPage from './components/NotFoundPage';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/insurance" element={<InsurancePage />} />
+          <Route path="/careers" element={<CareersPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>

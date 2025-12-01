@@ -14,6 +14,7 @@ const Header = () => {
     { name: 'About Us', path: '/about' },
     { name: 'Services', path: '/services' },
     { name: 'Insurance', path: '/insurance' },
+    { name: 'Careers', path: '/careers' },
     { name: 'Contact Us', path: '/contact' }
   ];
 
@@ -36,9 +37,9 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item, index) => (
-              <Link 
-                key={index} 
-                to={item.path} 
+              <Link
+                key={index}
+                to={item.path}
                 className="text-blue-200 hover:text-white font-medium transition-colors"
               >
                 {item.name}
@@ -47,7 +48,7 @@ const Header = () => {
           </nav>
 
           {/* Mobile menu button */}
-          <button 
+          <button
             onClick={toggleMenu}
             className="md:hidden text-white focus:outline-none"
             aria-label="Toggle menu"
@@ -61,9 +62,9 @@ const Header = () => {
           <nav className="md:hidden mt-4 pb-4">
             <div className="flex flex-col space-y-3">
               {navItems.map((item, index) => (
-                <Link 
-                  key={index} 
-                  to={item.path} 
+                <Link
+                  key={index}
+                  to={item.path}
                   className="text-blue-200 hover:text-white font-medium py-2 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
