@@ -29,10 +29,13 @@ const Header = () => {
       {/* Main header */}
       <div className="container mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-          <div className="flex flex-col">
-            <h1 className="text-2xl font-bold text-white">LEFF PRESCRIPTION CENTER</h1>
-            <p className="text-sm text-blue-200">Your Bronx Home-Team Pharmacy</p>
-          </div>
+          <Link to="/" className="flex items-center group">
+            <img
+              src="/images/image.png"
+              alt="Leff Prescription Center Logo"
+              className="h-28 w-28 object-contain rounded-full border-2 border-transparent hover:border-white hover:scale-110 transition-all duration-300 ease-in-out"
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
