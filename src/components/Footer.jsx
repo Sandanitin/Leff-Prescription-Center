@@ -113,9 +113,9 @@ const Footer = () => {
                   <span className="sr-only">Facebook</span>
                   <span className="font-bold">f</span>
                 </a>
-                <a href="#" className="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
-                  <span className="sr-only">Instagram</span>
-                  <span className="font-bold">ig</span>
+                <a href="https://x.com/LeffPresCenter" target="_blank" rel="noopener noreferrer" className="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                  <span className="sr-only">Twitter/X</span>
+                  <span className="font-bold">𝕏</span>
                 </a>
               </div>
             </div>
