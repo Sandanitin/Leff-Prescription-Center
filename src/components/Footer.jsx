@@ -55,8 +55,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.path} 
+                  <a
+                    href={link.path}
                     className="hover:text-white transition-colors"
                   >
                     {link.name}
@@ -72,8 +72,8 @@ const Footer = () => {
             <ul className="space-y-2">
               {services.map((service, index) => (
                 <li key={index}>
-                  <a 
-                    href={service.path} 
+                  <a
+                    href={service.path}
                     className="hover:text-white transition-colors"
                   >
                     {service.name}
@@ -81,13 +81,13 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-            
+
             <h4 className="text-lg font-bold text-white mt-6 mb-4">Convenience</h4>
             <ul className="space-y-2">
               {convenience.map((item, index) => (
                 <li key={index}>
-                  <a 
-                    href={item.path} 
+                  <a
+                    href={item.path}
                     className="hover:text-white transition-colors"
                   >
                     {item.name}
@@ -105,11 +105,11 @@ const Footer = () => {
               <p className="mb-1"><strong>Saturday:</strong> 10:00 AM - 3:00 PM</p>
               <p><strong>Sunday:</strong> Closed</p>
             </div>
-            
+
             <div className="mt-6">
               <h4 className="text-lg font-bold text-white mb-4">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
+                <a href="https://www.facebook.com/profile.php?id=61585332680960" target="_blank" rel="noopener noreferrer" className="bg-blue-800 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-colors">
                   <span className="sr-only">Facebook</span>
                   <span className="font-bold">f</span>
                 </a>
